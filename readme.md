@@ -70,7 +70,7 @@ method2:
         URI storesUri = URI.create(String.format("http://%s:%s/api/v1/product/find?id="+productId, instance.getHost(), instance.getPort()));
         Map<String,Object> map = restTemplate.getForObject(storesUri, Map.class);
 ```
->if you want to change rules, you need to add the following configuartions to your applications.yml:
+3. if you want to change rules, you need to add the following configuartions to your applications.yml:
 ```java
 #RoundRule is defualt,you can find the implementation classes of IRuls.
 #If your machine configuration is similar, it is recommended to use the default roundrule. If some machines have good configuration and performance, you can use weighted response time rule
@@ -103,4 +103,10 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
+```
+4. Feign's load balancing strategy is the same as ribbon configuration
+```java
+product-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 ```
