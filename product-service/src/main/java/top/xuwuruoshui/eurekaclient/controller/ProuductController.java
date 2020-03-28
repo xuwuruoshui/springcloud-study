@@ -10,6 +10,7 @@ import top.xuwuruoshui.eurekaclient.domain.Product;
 import top.xuwuruoshui.eurekaclient.service.ProductService;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -40,6 +41,13 @@ public class ProuductController {
      */
     @GetMapping("find")
     public Product findById(@RequestParam("id") int id){
+
+        //time test
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Product product = productService.findById(id);
 
         Product product_new = new Product();

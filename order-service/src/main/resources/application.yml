@@ -17,3 +17,11 @@ spring:
 product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+#超时5秒，读取10秒，hystrix默认一秒超时
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
