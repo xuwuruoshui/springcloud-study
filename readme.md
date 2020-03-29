@@ -123,7 +123,7 @@ public interface ProductClient {
 ```
 3. timeout
 >hytrix default 1s
-```java
+```yml
 feign:
   client:
     config:
@@ -153,6 +153,12 @@ when the load of a certain module increase,the call volume becomes larger,and so
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 ```
+2. let hystrix enable
+```yml
+feign:
+  hystrix:
+    enabled: true
+```
 2. add to startup class
 ```java
 @EnableCircuitBreaker
@@ -162,3 +168,9 @@ when the load of a certain module increase,the call volume becomes larger,and so
 @HystrixCommand(fallbackMethod = "saveOrderFail")
 ```
 >the fallbackMethod's args is the same as api method 
+4. downgrad 
+  1. create a package and class that implements order-service
+  2. add to ProductClient's `@FeignClient` args
+```java
+@FeignClient(value = "product-service",fallback = ProductClientFallback.class)
+```

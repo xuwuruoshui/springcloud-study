@@ -5,6 +5,7 @@ import top.xuwuruoshui.orderservice.service.ProductClient;
 
 /**
  * catch the error and print it to log
+ * downgraded's business logic
  */
 @Component
 public class ProductClientFallback implements ProductClient {

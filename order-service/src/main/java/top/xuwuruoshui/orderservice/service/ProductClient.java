@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import top.xuwuruoshui.orderservice.fallback.ProductClientFallback;
 
 /**
- * 商品服务客户端
+ * product-client
  */
 @FeignClient(value = "product-service",fallback = ProductClientFallback.class)
 public interface ProductClient {
