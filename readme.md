@@ -10,6 +10,12 @@
 2. add configurations to `application.yml`
 
 > Server
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+```
 ```yml
 server:
   port: 8761
@@ -25,6 +31,12 @@ eureka:
 ```
 
 > Client
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+```
 ```yml
 server:
   port: 8771
@@ -41,8 +53,15 @@ spring:
 ```
 
 # 3. Ribbon
->usage
-method1:
+>Usage
+1. Maven
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+```
+>method1:
 1. add to startup class
 ```java
     @Bean
@@ -55,7 +74,8 @@ method1:
 ```java
 Map<String,Object> map = restTemplate.getForObject("http://product-service/api/v1/product/find?id=" + productId, Map.class);
 ```
-method2:
+
+>method2:
 1. add to starup class
 ```java
     @Bean
@@ -79,6 +99,14 @@ product-service:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 ```
 # 4. Feign
+>Usage
+1. Maven
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+```
 1. add to starup class
 ```java
 @EnableFeignClients
@@ -110,3 +138,27 @@ product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 ```
+# 5.Hytrix
+>Solutions to various abnormal situations such as high system load,sudden traffic or network
+1. Fuse
+when there is a problem with a service and no normal call is issued,in order to make the system run normally,stop calling the service
+2. Downgrade
+when the load of a certain module increase,the call volume becomes larger,and some unimportant function modules are closed
+
+>Usage
+1. Maven
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+```
+2. add to startup class
+```java
+@EnableCircuitBreaker
+```
+3. add to the api method,and add the fallbackMethod 
+```java
+@HystrixCommand(fallbackMethod = "saveOrderFail")
+```
+>the fallbackMethod's args is the same as api method 
