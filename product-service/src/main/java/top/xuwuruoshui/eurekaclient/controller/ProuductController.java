@@ -10,7 +10,6 @@ import top.xuwuruoshui.eurekaclient.domain.Product;
 import top.xuwuruoshui.eurekaclient.service.ProductService;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/product")
