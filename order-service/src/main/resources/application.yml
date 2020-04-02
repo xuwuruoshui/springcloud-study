@@ -12,6 +12,11 @@ eureka:
 spring:
   application:
     name: order-service
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 9736
+    timeout: 2000
 
 #custom load balance,default RoundRobinRule,more(to see IRule)
 product-service:
