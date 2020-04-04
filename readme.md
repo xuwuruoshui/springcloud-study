@@ -174,3 +174,40 @@ feign:
 ```java
 @FeignClient(value = "product-service",fallback = ProductClientFallback.class)
 ```
+5. dashboard
+  1. Maven
+```pom
+        <!--dashboard-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+```
+  2. change the defualt timeoutInMilliseconds
+```yaml
+#default 1s
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+```
+  3. Expose "hystrix.stream" monitoring information
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+```
+  4. visit 
+<http://localhost:8781/hystrix>
+  5. Fill in the url in the space
+<http://localhost:8781/actuator/hystrix.stream>
+>Judging the condition of the server according to the dashboard

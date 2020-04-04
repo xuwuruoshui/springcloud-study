@@ -33,3 +33,32 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
+
+# disable hystrix timeout(not recommended)
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: false
+
+# change the defualt timeoutInMilliseconds
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+# Expose "hystrix.stream" monitoring information
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+#修改整个的默认级别
+logging:
+  level:
+    root: info

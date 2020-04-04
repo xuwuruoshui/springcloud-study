@@ -43,6 +43,14 @@ public class ProuductController {
     public Product findById(@RequestParam("id") int id){
 
 
+        if(id!=1){
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         Product product = productService.findById(id);
 
         Product product_new = new Product();
