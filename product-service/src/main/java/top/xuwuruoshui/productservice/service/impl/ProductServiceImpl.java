@@ -1,8 +1,8 @@
-package top.xuwuruoshui.eurekaclient.service.impl;
+package top.xuwuruoshui.productservice.service.impl;
 
 import org.springframework.stereotype.Service;
-import top.xuwuruoshui.eurekaclient.domain.Product;
-import top.xuwuruoshui.eurekaclient.service.ProductService;
+import top.xuwuruoshui.productservice.domain.Product;
+import top.xuwuruoshui.productservice.service.ProductService;
 
 import java.util.*;
 

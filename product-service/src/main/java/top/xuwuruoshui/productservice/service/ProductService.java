@@ -1,6 +1,6 @@
-package top.xuwuruoshui.eurekaclient.service;
+package top.xuwuruoshui.productservice.service;
 
-import top.xuwuruoshui.eurekaclient.domain.Product;
+import top.xuwuruoshui.productservice.domain.Product;
 
 import java.util.List;
 

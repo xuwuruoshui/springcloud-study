@@ -1,10 +1,10 @@
-package top.xuwuruoshui.eurekaclient;
+package top.xuwuruoshui.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EurekaClientApplicationTests {
+class ApiGatewayApplicationTests {
 
     @Test
     void contextLoads() {

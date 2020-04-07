@@ -1,4 +1,4 @@
-package top.xuwuruoshui.eurekaclient.controller;
+package top.xuwuruoshui.productservice.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import top.xuwuruoshui.eurekaclient.domain.Product;
-import top.xuwuruoshui.eurekaclient.service.ProductService;
+import top.xuwuruoshui.productservice.domain.Product;
+import top.xuwuruoshui.productservice.service.ProductService;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -43,13 +42,6 @@ public class ProuductController {
     public Product findById(@RequestParam("id") int id){
 
 
-        if(id!=1){
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
         Product product = productService.findById(id);
 
