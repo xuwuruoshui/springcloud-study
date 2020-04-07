@@ -1,4 +1,4 @@
-package top.xuwuruoshui.eurekaclient.domain;
+package top.xuwuruoshui.productservice.domain;
 
 import java.io.Serializable;
 
