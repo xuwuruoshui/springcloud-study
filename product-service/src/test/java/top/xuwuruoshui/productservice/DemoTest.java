@@ -1,4 +1,4 @@
-package top.xuwuruoshui.eurekaclient;
+package top.xuwuruoshui.productservice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
