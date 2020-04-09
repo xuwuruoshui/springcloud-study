@@ -211,3 +211,17 @@ management:
   5. Fill in the url in the space
 <http://localhost:8781/actuator/hystrix.stream>
 >Judging the condition of the server according to the dashboard
+
+# 6.zuul
+>Usage
+1. Maven
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+```
