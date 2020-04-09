@@ -7,7 +7,7 @@
 # 2.Eureka
 > UseAge
 1. add `@EnableEurekaServer` to startup class
-2. add configurations to `application.yml`
+2. add configurations to `pom` and `application.yml`
 
 > Server
 ```pom
@@ -224,4 +224,31 @@ management:
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+```
+2. add `@EnableZuulPoxy` to start up class
+3. add to `application.yml`
+```yml
+server:
+  port: 9000
+
+# server name
+spring:
+  application:
+    name: api-gateway
+
+# eureka path
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+zuul:
+  # custom routes mapping
+  routes:
+    product-service: /apigateway/product/**
+    order-service: /apigateway/order/**
+  #ignore product-service
+  #ignored-services: product-service
+  ignored-patterns: /*-service/**
 ```

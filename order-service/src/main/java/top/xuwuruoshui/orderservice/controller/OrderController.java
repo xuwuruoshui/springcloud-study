@@ -33,6 +33,13 @@ public class OrderController {
     @RequestMapping("save")
     @HystrixCommand(fallbackMethod = "saveOrderFail")
     public ResponseEntity<?> save(@RequestParam("user_id")int userId,@RequestParam("product_id")int productId,HttpServletRequest request){
+        //test http header
+        String token = request.getHeader("token");
+        String cookie = request.getHeader("cookie");
+
+        System.out.println("token:"+token);
+        System.out.println("cookie:"+cookie);
+
         ProductOrder productOrder = productOrderService.save(userId, productId);
 
         return new ResponseEntity<>(productOrder,HttpStatus.OK);

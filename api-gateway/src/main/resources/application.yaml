@@ -21,3 +21,5 @@ zuul:
   #ignore product-service
   #ignored-services: product-service
   ignored-patterns: /*-service/**
+  #handle the problem of empty http request header
+  sensitive-headers:
