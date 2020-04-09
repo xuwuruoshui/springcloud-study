@@ -252,3 +252,68 @@ zuul:
   #ignored-services: product-service
   ignored-patterns: /*-service/**
 ```
+4. add login filter
+  1. create a package and a class
+  2. extends `ZuulFilter`,override some method
+  ```java
+/**
+ * login filter
+ */
+@Component
+public class LoginFilter extends ZuulFilter {
+    /**
+     * filter type,pre filter
+     * @return
+     */
+    @Override
+    public String filterType() {
+        return PRE_TYPE;
+    }
+
+    /**
+     * filter execution order,the smaller the first
+     * @return
+     */
+    @Override
+    public int filterOrder() {
+        return 4;
+    }
+
+    /**
+     * Whether the filter is effective
+     * @return
+     */
+    @Override
+    public boolean shouldFilter() {
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+
+        // System.out.println(request.getRequestURI());
+        // System.out.println(request.getRequestURL());
+
+        if("/apigateway/order/api/v1/order/save".equalsIgnoreCase(request.getRequestURI())){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Object run() throws ZuulException {
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+
+        String token = request.getHeader("token");
+        if(StringUtils.isBlank(token)){
+            token = request.getParameter("token");
+        }
+
+        //login business logic
+        if(StringUtils.isBlank(token)){
+            requestContext.setSendZuulResponse(false);
+            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+        }
+        return null;
+    }
+}
+```
+
