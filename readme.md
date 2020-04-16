@@ -316,7 +316,7 @@ public class LoginFilter extends ZuulFilter {
     }
 }
 ```
-5. rate limit
+7. rate limit
 > the same as `LoginFilter`
 ```java
 /**
