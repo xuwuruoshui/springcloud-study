@@ -23,3 +23,17 @@ zuul:
   ignored-patterns: /*-service/**
   #handle the problem of empty http request header
   sensitive-headers:
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+
+# set zuul's timeout,although there is no ribbon lib,it can still run normally
+ribbon:
+  ConnectTimeout: 2000
+  # 请按实际情况配置
+  ReadTimeout: 3000
+
+#修改整个的默认级别
+logging:
+  level:
+    root: debug

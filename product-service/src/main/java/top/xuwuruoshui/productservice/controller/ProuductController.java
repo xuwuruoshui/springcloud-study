@@ -1,5 +1,6 @@
 package top.xuwuruoshui.productservice.controller;
 
+import ch.qos.logback.core.util.TimeUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import top.xuwuruoshui.productservice.domain.Product;
 import top.xuwuruoshui.productservice.service.ProductService;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -41,7 +43,12 @@ public class ProuductController {
     @GetMapping("find")
     public Product findById(@RequestParam("id") int id){
 
-
+        //test zipkin
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Product product = productService.findById(id);
 

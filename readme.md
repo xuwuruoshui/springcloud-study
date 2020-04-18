@@ -387,3 +387,31 @@ public class OrderRateLimiterFilter extends ZuulFilter {
 ```java
     private final Logger logger = LoggerFactory.getLogger(getClass());
 ```
+4. sleuth/zipkin
+   1. Maven
+```pom
+        <!--include sleuth and zipkin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+```
+   2. zipkin
+>official:<https://zipkin.io/pages/quickstart.html>
+* docker
+```shell
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+* config
+```yaml
+spring:
+  # zipkin
+  zipkin:
+    base-url: http://localhost:9411/
+  # sampling percentage,0.1-1,usually use the default configuration
+  sleuth:
+    sampler:
+      probability: 1
+```
+>access <http://localhost:9411>
+ 
