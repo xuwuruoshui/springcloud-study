@@ -378,7 +378,9 @@ public class OrderRateLimiterFilter extends ZuulFilter {
 2. log info
 >example:
 `INFO [order-service,a04acb78b43642b0,a04acb78b43642b0,false]`
-1. spring application name
-2. Trace ID,sleuth will generate a ID which named Trace ID and used to identify a request link. A request link has only one Trace ID
-3. Span ID,it will get  metadata and can have multiple
-4. Whether to output this information to the zipkin service(or other service) for collection and display
+   1. spring application name
+   2. Trace ID,sleuth will generate a ID which named Trace ID and used to identify a request link. A request link has only one Trace ID
+   3. Span ID,it will get  metadata and can have multiple
+   4. Whether to output this information to the zipkin service(or other service) for collection and display
+3. add logback
+>add logback to print correct log info
