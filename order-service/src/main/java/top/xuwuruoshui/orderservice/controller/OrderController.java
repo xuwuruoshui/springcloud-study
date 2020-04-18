@@ -48,7 +48,7 @@ public class OrderController {
     private ResponseEntity<?> saveOrderFail(int userId, int productId, HttpServletRequest request){
         //monitor
         String saveOrderKey = "save-order";
-        String sendValue = redisTemplate.opsForValue().get("saveOrderKey");
+        String sendValue = redisTemplate.opsForValue().get(saveOrderKey);
         final String ipAddress = request.getRemoteAddr();
 
         new Thread(()->{
