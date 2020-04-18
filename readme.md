@@ -383,4 +383,7 @@ public class OrderRateLimiterFilter extends ZuulFilter {
    3. Span ID,it will get  metadata and can have multiple
    4. Whether to output this information to the zipkin service(or other service) for collection and display
 3. add logback
->add logback to print correct log info
+>add logback to print correct log info,add to service layer
+```java
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+```
