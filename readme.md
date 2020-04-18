@@ -363,3 +363,22 @@ public class OrderRateLimiterFilter extends ZuulFilter {
     }
 }
 ```
+
+# 7.Sleuth/ZipKin
+>Sleuth is actually a tool that can track the process of a user request in the entire distributed system (including data collection, data transmission, data storage, data analysis, data visualization)
+>Usage
+1. Maven
+> add to all server modules
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+```
+2. log info
+>example:
+`INFO [order-service,a04acb78b43642b0,a04acb78b43642b0,false]`
+1. spring application name
+2. Trace ID,sleuth will generate a ID which named Trace ID and used to identify a request link. A request link has only one Trace ID
+3. Span ID,it will get  metadata and can have multiple
+4. Whether to output this information to the zipkin service(or other service) for collection and display

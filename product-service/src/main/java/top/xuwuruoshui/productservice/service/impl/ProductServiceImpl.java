@@ -1,5 +1,7 @@
 package top.xuwuruoshui.productservice.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import top.xuwuruoshui.productservice.domain.Product;
 import top.xuwuruoshui.productservice.service.ProductService;
@@ -8,6 +10,7 @@ import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     public static final Map<Integer, Product> daoMap = new HashMap<>();
 
     static {
@@ -38,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(int id) {
+        logger.info("service findById");
         return daoMap.get(id);
     }
 }
