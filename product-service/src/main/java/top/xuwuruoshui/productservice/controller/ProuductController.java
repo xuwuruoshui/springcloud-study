@@ -43,12 +43,6 @@ public class ProuductController {
     @GetMapping("find")
     public Product findById(@RequestParam("id") int id){
 
-        //test zipkin
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Product product = productService.findById(id);
 

@@ -38,7 +38,7 @@ feign:
     config:
       default:
         connectTimeout: 3000
-        readTimeout: 2000
+        readTimeout: 2 000
         loggerLevel: basic
 
 # disable hystrix timeout(not recommended)
