@@ -415,3 +415,96 @@ spring:
 ```
 >access <http://localhost:9411>
  
+# 8.Config Server
+>Usage
+1. Maven
+   1. server
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+```
+   2. client
+```pom
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+```
+2. Add `@EnableConfigServer` to your startup class,and add the configure to your `application.yml`
+   1. server
+```yml
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xuwuruoshui/config-cloud-test.git
+          username: xxxxx
+          password: xxxxx
+          timeout: 5
+          #default git branch is master
+          default-label: master
+
+server:
+  port: 9100
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+```
+   2. client
+>You needn't add `@EnableConfigServer` in client
+>Rename `application.yml` to `bootstrap.yml`
+>It's recommended to use `label` to distinguish configuration files
+```yml
+# Specify the address of the registration center
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# server name
+spring:
+  application:
+    name: product-service
+  # Specify which registry to read from
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+      # env
+      profile: dev
+      # branch
+      label: master
+```
+3. create a git repository
+   1. copy your configure to git repository and create `product-service-dev.xml` file, then add `env` and `branch`
+```yml
+server:
+  port: 8771
+
+# Specify the address of the registration center
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: http://localhost:8761/eureka/
+
+# server name
+# spring:
+# application:
+#   name: product-service
+
+env: dev
+branch: master
+```
+>now,you can start correctly the config-server
+>access: <http://localhost:9100/master/product-service-dev.yml>

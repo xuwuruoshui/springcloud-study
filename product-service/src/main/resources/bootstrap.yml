@@ -1,0 +1,19 @@
+# Specify the address of the registration center
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# server name
+spring:
+  application:
+    name: product-service
+  # Specify which registry to read from
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+      # env
+      profile: dev
+      # branch
+      label: master
