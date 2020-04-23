@@ -6,8 +6,8 @@ spring:
       server:
         git:
           uri: https://github.com/xuwuruoshui/config-cloud-test.git
-          username: xxx
-          password: xxx
+          username: xuwuruoshui
+          password: xxxx
           timeout: 5
           #default git branch is master
           default-label: master
@@ -20,6 +20,4 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-logging:
-  level:
-    root: debug
+

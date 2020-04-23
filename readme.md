@@ -508,3 +508,43 @@ branch: master
 ```
 >now,you can start correctly the config-server
 >access: <http://localhost:9100/master/product-service-dev.yml>
+
+# 8.Bus
+>Usage
+1. Maven
+>add to product service
+```pom
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+```
+2. Docker
+```shell
+docker run -p 5672:5672 -p 15672:15672 --name my-rabbitmq rabbitmq:managemen
+```
+3. add `@RefeshScope` to controller class
+4. client's `bootstrap.yml` 
+```yml
+management:
+  endpoints:
+      web:
+        exposure:
+          include: bus-refresh,bus-env
+```
+4. test
+>change remote configure,and access(method:post):
+1. <http://localhost:8771/actuator/bus-refresh>
+2. <http://localhost:8771/actuator/bus-env>
+- bus-refresh: refresh the configure
+- bus-env: it will directly change the configure in memory,when you use it,you need to use `bus-refresh` to refresh.example:
+```json
+{
+    "name": "env",
+    "value": "fffff"
+}
+```

@@ -3,6 +3,8 @@ package top.xuwuruoshui.productservice.controller;
 import ch.qos.logback.core.util.TimeUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +17,14 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/product")
+@RefreshScope
 public class ProuductController {
 
     @Value("${server.port}")
     private int port;
+
+    @Value("${env}")
+    private String env;
 
     private ProductService productService;
 
@@ -48,7 +54,7 @@ public class ProuductController {
 
         Product product_new = new Product();
         BeanUtils.copyProperties(product,product_new);
-        product_new.setName(product.getName()+"data from port"+port);
+        product_new.setName(product.getName()+"data from port"+port+",env = "+env);
         return product_new;
     }
 }

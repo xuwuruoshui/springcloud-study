@@ -1,3 +1,5 @@
+#
+
 # Specify the address of the registration center
 eureka:
   client:
@@ -11,9 +13,27 @@ spring:
   cloud:
     config:
       discovery:
-        service-id: config-server
+        service-id: CONFIG-SERVER
         enabled: true
       # env
       profile: dev
       # branch
       label: master
+
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+      web:
+        exposure:
+          include: "*"
+
