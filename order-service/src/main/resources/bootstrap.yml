@@ -1,12 +1,13 @@
-# Specify the address of the registration center
+# eureka path
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-# server name
+
+#server name
 spring:
   application:
-    name: product-service
+    name: order-service
   # Specify which registry to read from
   cloud:
     config:
@@ -14,7 +15,6 @@ spring:
         service-id: config-server
         enabled: true
       # env
-      profile: dev
+      profile: test
       # branch
       label: master
-

@@ -7,7 +7,7 @@ spring:
         git:
           uri: https://github.com/xuwuruoshui/config-cloud-test.git
           username: xuwuruoshui
-          password: xxxx
+          password: xxxxxxx
           timeout: 5
           #default git branch is master
           default-label: master

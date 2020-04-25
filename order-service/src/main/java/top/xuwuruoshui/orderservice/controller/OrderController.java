@@ -2,6 +2,7 @@ package top.xuwuruoshui.orderservice.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/order")
+@RefreshScope
 public class OrderController {
 
     private ProductOrderService productOrderService;

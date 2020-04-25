@@ -418,22 +418,18 @@ spring:
 # 8.Config Server
 >Usage
 1. Maven
-   1. server
+* server
 ```pom
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 ```
-   2. client
+* client
 ```pom
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
 ```
 2. Add `@EnableConfigServer` to your startup class,and add the configure to your `application.yml`
