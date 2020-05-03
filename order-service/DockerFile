@@ -1,0 +1,5 @@
+FROM openjdk:13-jdk-slim
+MAINTAINER xuwuruoshui <xuwuruoshui@gmail.com>
+RUN mkdir /opt/app
+COPY target/order-service.jar /opt/app/order-service.jar
+ENTRYPOINT ["java", "-jar", "/opt/app/order-service.jar"]

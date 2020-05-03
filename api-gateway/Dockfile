@@ -1,0 +1,4 @@
+FROM openjdk:14-jdk-slim
+MAINTAINER xuwuruoshui <xuwuruoshui@gmail.com>
+COPY target/api-gateway.jar /opt/app/api-gateway.jar
+ENTRYPOINT ["java", "-jar", "/opt/app/api-gateway.jar"]
